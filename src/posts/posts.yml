@@ -1,6 +1,0 @@
-tags: posts
-layout: base
-eleventyComputed:
-  eleventyNavigation:
-    key: '{{ title }}'
-    parent: Posts
