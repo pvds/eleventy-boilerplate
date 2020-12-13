@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ meta.title }}</title>
+
+  {% set metaTitleSuffixDefault %} - {{page.fields.title}}{% endset %}
+  {% set metaTitleSuffix = '' if page.fields.slug === '/' else metaTitleSuffixDefault %}
+  <title>{{ meta.title }}{{ metaTitleSuffix }}</title>
 
   <link rel="stylesheet" href="{{ '/assets/styles/main.css' | url }}">
   <script>
