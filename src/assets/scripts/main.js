@@ -1,6 +1,7 @@
 import 'focus-visible';
 
 // Internal Modules
+import './modules/keyNav';
 import './modules/nav';
 import {
   customInstallPrompt,
