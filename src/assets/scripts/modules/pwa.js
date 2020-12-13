@@ -38,8 +38,12 @@ export function customInstallPrompt(e) {
     if (navigator.onLine) {
       // Stash the event so it can be triggered later.
       deferredPrompt = e;
-      // Update UI notify the user they can install the PWA
-      handleInstallPrompt(true);
+
+      // User did not dismiss the custom prompt before
+      if (!sessionStorage.userDismissedCustomPwaInstallPrompt) {
+        // Update UI notify the user they can install the PWA
+        handleInstallPrompt(true);
+      }
     }
   }, 6000);
 
@@ -62,6 +66,7 @@ export function installPwa() {
         console.log('User accepted the install prompt');
       } else {
         console.log('User dismissed the install prompt');
+        sessionStorage.userDismissedPwaInstallPrompt = true;
       }
     });
   }
@@ -71,6 +76,8 @@ export function installPwa() {
  * Hide install promotion
  */
 export function installPwaDismiss() {
+  sessionStorage.userDismissedCustomPwaInstallPrompt = true;
+
   // Hide the app provided install promotion
   handleInstallPrompt(false);
 }
