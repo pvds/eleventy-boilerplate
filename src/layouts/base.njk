@@ -28,7 +28,11 @@
   <main id="main" class="layout__main" tabindex="-1">
     {{ content | safe }}
   </main>
-  {% include "footer.njk" %}
+  {% set paginationVisibility = 'hidden' if page.fields.slug === '/' else '' %}
+  <div class="layout__footer {{ paginationVisibility }}">
+    {% include "pagination.njk" %}
+    {% include "footer.njk" %}
+  </div>
 </div>
 
 <div class="offcanvas offcanvas--bottom">
@@ -39,6 +43,8 @@
     {% snackbar "pwa-install", "for easy access", true, "Install", true, "Dismiss install" %}
   </div>
 </div>
+
+{% include "help.njk" %}
 
 <script type="text/javascript" src="{{ '/assets/scripts/main.js' | url }}"></script>
 </body>
