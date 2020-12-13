@@ -10,6 +10,7 @@ import {
   pwaInstallCta,
   pwaInstallDismiss,
 } from './modules/pwa';
+import './modules/help';
 
 /**
  * Execute when whole page is loaded
