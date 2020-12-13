@@ -1,4 +1,6 @@
 /* custom PWA installation triggers */
+import { focusable } from './helpers';
+
 export const pwaInstallCta = document.getElementById('pwa-install-cta');
 export const pwaInstallDismiss = document.getElementById('pwa-install-dismiss');
 
@@ -95,8 +97,14 @@ export function handleInstallPrompt(show) {
   if (show) {
     document.body.classList.add(mode);
     promptElement.classList.add(promptElementVisible);
+
+    focusable(pwaInstallCta, true);
+    focusable(pwaInstallDismiss, true);
   } else {
     document.body.classList.remove(mode);
     promptElement.classList.remove(promptElementVisible);
+
+    focusable(pwaInstallCta, false);
+    focusable(pwaInstallDismiss, false);
   }
 }
