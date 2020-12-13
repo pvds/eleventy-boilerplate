@@ -37,7 +37,7 @@ const purgecssConfig = {
       ':before',
       ':after',
     ],
-    deep: [/focus-visible$/],
+    deep: [/focus-visible$/, /^::-webkit-scrollbar/],
   },
 };
 
