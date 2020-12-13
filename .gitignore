@@ -6,6 +6,7 @@
 dist
 tmp
 coverage
+cache
 
 # package managers
 node_modules/
