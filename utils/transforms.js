@@ -17,18 +17,17 @@ module.exports = {
    * @return {string}
    */
   htmlmin: function (content, outputPath) {
-    if (shouldTransformHTML(outputPath)) {
-      return htmlmin.minify(content, {
-        useShortDoctype: true,
-        removeComments: true,
-        collapseWhitespace: true,
-      });
-    }
-    return content;
+    return shouldTransformHTML(outputPath)
+      ? htmlmin.minify(content, {
+          useShortDoctype: true,
+          removeComments: true,
+          collapseWhitespace: true,
+        })
+      : content;
   },
 
   /**
-   * Inline critial css
+   * Inline critical css
    * @param {string} content
    * @param {string} outputPath
    * @return {Promise<Object.html|*>}
