@@ -9,10 +9,14 @@
   <title>{{ meta.title }}{{ metaTitleSuffix }}</title>
 
   <link rel="stylesheet" href="{{ '/assets/styles/main.css' | url }}">
+
+  {% if env.ELEVENTY_ENV === 'production' %}
   <script>
       if ("serviceWorker" in navigator)
           navigator.serviceWorker.register("/service-worker.js");
   </script>
+  {% endif %}
+
   {% include "meta.njk" %}
 </head>
 <body>
