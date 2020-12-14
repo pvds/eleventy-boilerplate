@@ -1,7 +1,7 @@
 {% set paginationVisibility = 'hidden' if page.fields.slug === '/' else '' %}
 
-<nav aria-label="pagination" class="{{ paginationVisibility }}">
-    <ol class="pagination">
+<nav aria-label="pagination" class="content-section {{ paginationVisibility }}">
+    <ol class="pagination content-section__inner">
         {%- for pageEntry in pagination.pages %}
             {% if pagination.href.previous === pageEntry.url %}
                 <li class="pagination__item pagination__item--previous">

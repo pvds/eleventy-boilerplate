@@ -6,6 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: grid-unit(3);
 
   &__item {
     & + & {
@@ -38,5 +39,6 @@
 
   &__icon {
     flex: none;
+    width: grid-unit(1.5);
   }
 }
