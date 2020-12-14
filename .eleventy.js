@@ -6,9 +6,10 @@ const markdownItImsize = require('markdown-it-imsize');
 const yaml = require('js-yaml');
 
 const filters = require('./utils/filters.js');
-const transforms = require('./utils/transforms.js');
-const shortcodes = require('./utils/shortcodes.js');
-const iconsprite = require('./utils/iconsprite.js');
+const transforms = require('./utils/transforms');
+const shortcodes = require('./utils/shortcodes');
+const shortcodesPaired = require('./utils/shortcodes-paired');
+const iconsprite = require('./utils/iconsprite');
 
 const isProd = process.env.ELEVENTY_ENV === 'production';
 
