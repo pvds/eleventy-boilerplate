@@ -4,7 +4,6 @@ import { debounce, focusable } from './helpers';
 const SELECTORS = {
   nav: '.js-nav',
   navLinks: '.js-nav-link',
-  ctaLink: '.js-nav-cta',
   openBtn: '.js-nav-open',
   closeBtn: '.js-nav-close',
 };
@@ -69,7 +68,6 @@ class Navigation {
       this.focusTrap.activate();
       window.addEventListener('click', this.clickOutsideMenu, true);
 
-      focusable(this.ctaLink, true);
       focusable(this.closeBtn, true);
 
       [...this.navLinks].map((link) => {
@@ -79,7 +77,6 @@ class Navigation {
       this.focusTrap.deactivate();
       window.removeEventListener('click', this.clickOutsideMenu, true);
 
-      focusable(this.ctaLink, false);
       focusable(this.closeBtn, false);
 
       [...this.navLinks].map((link) => {
