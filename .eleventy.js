@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const pluginRss = require('@11ty/eleventy-plugin-rss');
 const pluginNavigation = require('@11ty/eleventy-navigation');
 const pluginPWA = require('@pragmatics/eleventy-plugin-pwa');
@@ -12,6 +14,8 @@ const shortcodesPaired = require('./utils/shortcodes-paired');
 const iconsprite = require('./utils/iconsprite');
 
 const isProd = process.env.ELEVENTY_ENV === 'production';
+
+const contentfulPages = require('./src/api/contentful-page');
 
 const markdownItConfig = {
   html: true,
@@ -35,6 +39,10 @@ module.exports = function (config) {
     config.addFilter(filterName, filters[filterName]);
   });
 
+  config.addFilter('md', (content = '') =>
+    markdownIt(markdownItConfig).use(markdownItImsize).render(content)
+  );
+
   // Transforms
   Object.keys(transforms).forEach((transformName) => {
     config.addTransform(transformName, transforms[transformName]);
@@ -44,6 +52,14 @@ module.exports = function (config) {
   Object.keys(shortcodes).forEach((shortcodeName) => {
     config.addShortcode(shortcodeName, shortcodes[shortcodeName]);
   });
+
+  // Paired Shortcodes
+  Object.keys(shortcodesPaired).forEach((shortcodeName) => {
+    config.addPairedShortcode(shortcodeName, shortcodesPaired[shortcodeName]);
+  });
+
+  // Collections
+  config.addCollection('pages', contentfulPages);
 
   // Icon Sprite
   config.addNunjucksAsyncShortcode('iconsprite', iconsprite);
