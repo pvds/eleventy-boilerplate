@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  {% set metaTitleSuffixDefault %} - {{page.fields.title}}{% endset %}
+  {% set metaTitleSuffixDefault %} - {{ page.fields.title }}{% endset %}
   {% set metaTitleSuffix = '' if page.fields.slug === '/' else metaTitleSuffixDefault %}
   <title>{{ meta.title }}{{ metaTitleSuffix }}</title>
 
   <link rel="stylesheet" href="{{ '/assets/styles/main.css' | url }}">
 
   {% if env.ELEVENTY_ENV === 'production' %}
-  <script>
+    <script>
       if ("serviceWorker" in navigator)
-          navigator.serviceWorker.register("/service-worker.js");
-  </script>
+        navigator.serviceWorker.register("/service-worker.js");
+    </script>
   {% endif %}
 
   {% include "meta.njk" %}
